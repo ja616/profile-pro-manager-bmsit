@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { Upload, User } from "lucide-react";
 
 interface BasicInfoStepProps {
   onNext: (data: any) => void;
@@ -25,8 +26,20 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
     joinDate: "",
     address: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    profilePicture: null as File | null
   });
+
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFormData({ ...formData, profilePicture: file });
+      const url = URL.createObjectURL(file);
+      setPreviewUrl(url);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,7 +51,37 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Profile Picture Upload */}
+      <div className="flex flex-col items-center space-y-4">
+        <div className="w-32 h-32 rounded-full border-2 border-dashed border-slate-300 flex items-center justify-center bg-slate-50 relative overflow-hidden">
+          {previewUrl ? (
+            <img src={previewUrl} alt="Profile Preview" className="w-full h-full object-cover" />
+          ) : (
+            <div className="text-center">
+              <User className="w-12 h-12 text-slate-400 mx-auto mb-2" />
+              <p className="text-xs text-slate-500">Upload Photo</p>
+            </div>
+          )}
+        </div>
+        <div>
+          <Label htmlFor="profilePicture" className="cursor-pointer">
+            <div className="flex items-center space-x-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+              <Upload className="w-4 h-4" />
+              <span>Upload Profile Picture *</span>
+            </div>
+          </Label>
+          <Input
+            id="profilePicture"
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            required
+            className="hidden"
+          />
+        </div>
+      </div>
+
       <div className="grid md:grid-cols-2 gap-4">
         <div>
           <Label htmlFor="name">Full Name *</Label>
@@ -47,6 +90,7 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             required
+            className="mt-1"
           />
         </div>
         <div>
@@ -57,6 +101,7 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             required
+            className="mt-1"
           />
         </div>
       </div>
@@ -69,6 +114,7 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             required
+            className="mt-1"
           />
         </div>
         <div>
@@ -79,6 +125,7 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
             value={formData.dob}
             onChange={(e) => setFormData({ ...formData, dob: e.target.value })}
             required
+            className="mt-1"
           />
         </div>
       </div>
@@ -87,7 +134,7 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
         <div>
           <Label htmlFor="department">Department *</Label>
           <Select onValueChange={(value) => setFormData({ ...formData, department: value })}>
-            <SelectTrigger>
+            <SelectTrigger className="mt-1">
               <SelectValue placeholder="Select Department" />
             </SelectTrigger>
             <SelectContent>
@@ -103,7 +150,7 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
         <div>
           <Label htmlFor="designation">Designation *</Label>
           <Select onValueChange={(value) => setFormData({ ...formData, designation: value })}>
-            <SelectTrigger>
+            <SelectTrigger className="mt-1">
               <SelectValue placeholder="Select Designation" />
             </SelectTrigger>
             <SelectContent>
@@ -129,6 +176,7 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
           value={formData.joinDate}
           onChange={(e) => setFormData({ ...formData, joinDate: e.target.value })}
           required
+          className="mt-1"
         />
       </div>
 
@@ -139,6 +187,7 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
           value={formData.address}
           onChange={(e) => setFormData({ ...formData, address: e.target.value })}
           required
+          className="mt-1"
         />
       </div>
 
@@ -151,6 +200,7 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             required
+            className="mt-1"
           />
         </div>
         <div>
@@ -161,6 +211,7 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
             value={formData.confirmPassword}
             onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
             required
+            className="mt-1"
           />
         </div>
       </div>
@@ -169,7 +220,9 @@ export const BasicInfoStep = ({ onNext, onBack, canGoBack }: BasicInfoStepProps)
         <Button type="button" variant="outline" onClick={onBack} disabled={!canGoBack}>
           Back
         </Button>
-        <Button type="submit" className="bg-[#1E2A38] text-white hover:bg-[#1E2A38]/90">Next</Button>
+        <Button type="submit" className="bg-slate-800 text-white hover:bg-slate-900">
+          Next
+        </Button>
       </div>
     </form>
   );

@@ -56,16 +56,16 @@ const Signup = () => {
   const progress = ((currentStep + 1) / steps.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <Header />
       
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
-          <Card className="shadow-xl">
+          <Card className="shadow-xl bg-white/95 backdrop-blur-sm border-slate-200">
             <CardHeader>
-              <CardTitle className="text-2xl text-center">Staff Registration</CardTitle>
+              <CardTitle className="text-2xl text-center text-slate-800">Staff Registration</CardTitle>
               <div className="space-y-2">
-                <div className="flex justify-between text-sm text-gray-600">
+                <div className="flex justify-between text-sm text-slate-600">
                   <span>Step {currentStep + 1} of {steps.length}</span>
                   <span>{steps[currentStep].title}</span>
                 </div>
