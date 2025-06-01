@@ -101,6 +101,9 @@ export const EducationStep = ({ onNext, onBack, canGoBack }: EducationStepProps)
                 <div>
                   <Label>Year of Completion *</Label>
                   <Input
+                    type="number"
+                    min="1950"
+                    max="2030"
                     value={edu.year}
                     onChange={(e) => updateEducation(index, 'year', e.target.value)}
                     placeholder="e.g., 2020"
@@ -110,9 +113,13 @@ export const EducationStep = ({ onNext, onBack, canGoBack }: EducationStepProps)
                 <div>
                   <Label>CGPA/Percentage *</Label>
                   <Input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    max="10"
                     value={edu.cgpa}
                     onChange={(e) => updateEducation(index, 'cgpa', e.target.value)}
-                    placeholder="e.g., 8.5/10 or 85%"
+                    placeholder="e.g., 8.5"
                     required
                   />
                 </div>
@@ -151,7 +158,7 @@ export const EducationStep = ({ onNext, onBack, canGoBack }: EducationStepProps)
         <Button type="button" variant="outline" onClick={onBack} disabled={!canGoBack}>
           Back
         </Button>
-        <Button type="submit">Next</Button>
+        <Button type="submit" className="bg-[#1E2A38] text-white hover:bg-[#1E2A38]/90">Next</Button>
       </div>
     </form>
   );

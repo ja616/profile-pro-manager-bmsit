@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { GraduationCap, Briefcase, Medal, Shield, FileText, Edit } from "lucide-react";
+import { GraduationCap, Briefcase, Medal, Shield, FileText, Edit, Plus } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -19,36 +20,36 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-[#F4F6F8] to-white">
       <Header />
       
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Staff Dashboard</h1>
-          <p className="text-gray-600">Welcome back, {mockData.name}</p>
+          <h1 className="text-3xl font-bold text-[#1E2A38]">Staff Dashboard</h1>
+          <p className="text-[#4A4A4A]">Welcome back, {mockData.name}</p>
         </div>
 
         <div className="grid lg:grid-cols-4 gap-6">
           {/* Profile Summary */}
           <div className="lg:col-span-1">
-            <Card>
+            <Card className="border-[#00B8A9]/20">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                <CardTitle className="flex items-center gap-2 text-[#1E2A38]">
+                  <div className="w-10 h-10 bg-[#1E2A38] rounded-full flex items-center justify-center text-white font-bold">
                     {mockData.name.split(' ').map(n => n[0]).join('')}
                   </div>
                   Profile
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
-                <p className="font-semibold">{mockData.name}</p>
-                <p className="text-sm text-gray-600">{mockData.designation}</p>
-                <p className="text-sm text-gray-600">{mockData.department}</p>
+                <p className="font-semibold text-[#1E2A38]">{mockData.name}</p>
+                <p className="text-sm text-[#4A4A4A]">{mockData.designation}</p>
+                <p className="text-sm text-[#4A4A4A]">{mockData.department}</p>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setIsEditing(!isEditing)}
-                  className="w-full mt-4"
+                  className="w-full mt-4 border-[#00B8A9] text-[#00B8A9] hover:bg-[#00B8A9]/10"
                 >
                   <Edit className="w-4 h-4 mr-2" />
                   {isEditing ? "Cancel" : "Edit Profile"}
@@ -60,40 +61,52 @@ const Dashboard = () => {
           {/* Main Content */}
           <div className="lg:col-span-3">
             <Tabs defaultValue="education" className="space-y-4">
-              <TabsList className="grid w-full grid-cols-5">
-                <TabsTrigger value="education" className="flex items-center gap-2">
+              <TabsList className="grid w-full grid-cols-5 bg-[#F4F6F8]">
+                <TabsTrigger value="education" className="flex items-center gap-2 data-[state=active]:bg-[#00B8A9] data-[state=active]:text-white">
                   <GraduationCap className="w-4 h-4" />
                   Education
                 </TabsTrigger>
-                <TabsTrigger value="experience" className="flex items-center gap-2">
+                <TabsTrigger value="experience" className="flex items-center gap-2 data-[state=active]:bg-[#00B8A9] data-[state=active]:text-white">
                   <Briefcase className="w-4 h-4" />
                   Experience
                 </TabsTrigger>
-                <TabsTrigger value="courses" className="flex items-center gap-2">
+                <TabsTrigger value="courses" className="flex items-center gap-2 data-[state=active]:bg-[#00B8A9] data-[state=active]:text-white">
                   <FileText className="w-4 h-4" />
                   Courses
                 </TabsTrigger>
-                <TabsTrigger value="achievements" className="flex items-center gap-2">
+                <TabsTrigger value="achievements" className="flex items-center gap-2 data-[state=active]:bg-[#00B8A9] data-[state=active]:text-white">
                   <Medal className="w-4 h-4" />
                   Achievements
                 </TabsTrigger>
-                <TabsTrigger value="verification" className="flex items-center gap-2">
+                <TabsTrigger value="verification" className="flex items-center gap-2 data-[state=active]:bg-[#00B8A9] data-[state=active]:text-white">
                   <Shield className="w-4 h-4" />
                   Verification
                 </TabsTrigger>
               </TabsList>
 
               <TabsContent value="education">
-                <Card>
+                <Card className="border-[#00B8A9]/20">
                   <CardHeader>
-                    <CardTitle>Education Details</CardTitle>
+                    <div className="flex justify-between items-center">
+                      <CardTitle className="text-[#1E2A38]">Education Details</CardTitle>
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline" className="border-[#00B8A9] text-[#00B8A9] hover:bg-[#00B8A9]/10">
+                          <Plus className="w-4 h-4 mr-1" />
+                          Add
+                        </Button>
+                        <Button size="sm" variant="outline" className="border-[#00B8A9] text-[#00B8A9] hover:bg-[#00B8A9]/10">
+                          <Edit className="w-4 h-4 mr-1" />
+                          Edit
+                        </Button>
+                      </div>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div className="border rounded p-4">
-                        <h4 className="font-semibold">Ph.D. in Computer Science</h4>
-                        <p className="text-gray-600">Indian Institute of Science, Bangalore</p>
-                        <p className="text-sm text-gray-500">2018 • CGPA: 9.2/10</p>
+                      <div className="border rounded p-4 bg-[#F4F6F8]/50">
+                        <h4 className="font-semibold text-[#1E2A38]">Ph.D. in Computer Science</h4>
+                        <p className="text-[#4A4A4A]">Indian Institute of Science, Bangalore</p>
+                        <p className="text-sm text-[#4A4A4A]">2018 • CGPA: 9.2/10</p>
                         <div className="mt-2 flex gap-2">
                           <Button variant="outline" size="sm">📎 View Certificate</Button>
                           <Button variant="outline" size="sm">📄 View Marksheet</Button>
@@ -105,16 +118,28 @@ const Dashboard = () => {
               </TabsContent>
 
               <TabsContent value="experience">
-                <Card>
+                <Card className="border-[#00B8A9]/20">
                   <CardHeader>
-                    <CardTitle>Professional Experience</CardTitle>
+                    <div className="flex justify-between items-center">
+                      <CardTitle className="text-[#1E2A38]">Professional Experience</CardTitle>
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline" className="border-[#00B8A9] text-[#00B8A9] hover:bg-[#00B8A9]/10">
+                          <Plus className="w-4 h-4 mr-1" />
+                          Add
+                        </Button>
+                        <Button size="sm" variant="outline" className="border-[#00B8A9] text-[#00B8A9] hover:bg-[#00B8A9]/10">
+                          <Edit className="w-4 h-4 mr-1" />
+                          Edit
+                        </Button>
+                      </div>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div className="border rounded p-4">
-                        <h4 className="font-semibold">Senior Software Engineer</h4>
-                        <p className="text-gray-600">Microsoft India</p>
-                        <p className="text-sm text-gray-500">2015 - 2020 • 5 years</p>
+                      <div className="border rounded p-4 bg-[#F4F6F8]/50">
+                        <h4 className="font-semibold text-[#1E2A38]">Senior Software Engineer</h4>
+                        <p className="text-[#4A4A4A]">Microsoft India</p>
+                        <p className="text-sm text-[#4A4A4A]">2015 - 2020 • 5 years</p>
                         <div className="mt-2">
                           <Button variant="outline" size="sm">📎 View Experience Letter</Button>
                         </div>
@@ -125,16 +150,28 @@ const Dashboard = () => {
               </TabsContent>
 
               <TabsContent value="courses">
-                <Card>
+                <Card className="border-[#00B8A9]/20">
                   <CardHeader>
-                    <CardTitle>Courses & Certifications</CardTitle>
+                    <div className="flex justify-between items-center">
+                      <CardTitle className="text-[#1E2A38]">Courses & Certifications</CardTitle>
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline" className="border-[#00B8A9] text-[#00B8A9] hover:bg-[#00B8A9]/10">
+                          <Plus className="w-4 h-4 mr-1" />
+                          Add
+                        </Button>
+                        <Button size="sm" variant="outline" className="border-[#00B8A9] text-[#00B8A9] hover:bg-[#00B8A9]/10">
+                          <Edit className="w-4 h-4 mr-1" />
+                          Edit
+                        </Button>
+                      </div>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div className="border rounded p-4">
-                        <h4 className="font-semibold">Machine Learning Specialization</h4>
-                        <p className="text-gray-600">Coursera - Stanford University</p>
-                        <p className="text-sm text-gray-500">2023</p>
+                      <div className="border rounded p-4 bg-[#F4F6F8]/50">
+                        <h4 className="font-semibold text-[#1E2A38]">Machine Learning Specialization</h4>
+                        <p className="text-[#4A4A4A]">Coursera - Stanford University</p>
+                        <p className="text-sm text-[#4A4A4A]">2023</p>
                         <div className="mt-2">
                           <Button variant="outline" size="sm">📎 View Certificate</Button>
                         </div>
@@ -145,16 +182,28 @@ const Dashboard = () => {
               </TabsContent>
 
               <TabsContent value="achievements">
-                <Card>
+                <Card className="border-[#00B8A9]/20">
                   <CardHeader>
-                    <CardTitle>Achievements & Awards</CardTitle>
+                    <div className="flex justify-between items-center">
+                      <CardTitle className="text-[#1E2A38]">Achievements & Awards</CardTitle>
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline" className="border-[#00B8A9] text-[#00B8A9] hover:bg-[#00B8A9]/10">
+                          <Plus className="w-4 h-4 mr-1" />
+                          Add
+                        </Button>
+                        <Button size="sm" variant="outline" className="border-[#00B8A9] text-[#00B8A9] hover:bg-[#00B8A9]/10">
+                          <Edit className="w-4 h-4 mr-1" />
+                          Edit
+                        </Button>
+                      </div>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div className="border rounded p-4">
-                        <h4 className="font-semibold">Best Faculty Award</h4>
-                        <p className="text-gray-600">Outstanding contribution to research and teaching</p>
-                        <p className="text-sm text-gray-500">BMS Institute of Technology • 2024</p>
+                      <div className="border rounded p-4 bg-[#F4F6F8]/50">
+                        <h4 className="font-semibold text-[#1E2A38]">Best Faculty Award</h4>
+                        <p className="text-[#4A4A4A]">Outstanding contribution to research and teaching</p>
+                        <p className="text-sm text-[#4A4A4A]">BMS Institute of Technology • 2024</p>
                         <div className="mt-2">
                           <Button variant="outline" size="sm">📎 View Certificate</Button>
                         </div>
@@ -165,22 +214,22 @@ const Dashboard = () => {
               </TabsContent>
 
               <TabsContent value="verification">
-                <Card>
+                <Card className="border-[#00B8A9]/20">
                   <CardHeader>
-                    <CardTitle>Verification Documents</CardTitle>
+                    <CardTitle className="text-[#1E2A38]">Verification Documents</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div className="border rounded p-4">
-                        <h4 className="font-semibold">Aadhaar Card</h4>
-                        <p className="text-gray-600">Identity Verification</p>
+                      <div className="border rounded p-4 bg-[#F4F6F8]/50">
+                        <h4 className="font-semibold text-[#1E2A38]">Aadhaar Card</h4>
+                        <p className="text-[#4A4A4A]">Identity Verification</p>
                         <div className="mt-2">
                           <Button variant="outline" size="sm">📎 View Document</Button>
                         </div>
                       </div>
-                      <div className="border rounded p-4">
-                        <h4 className="font-semibold">Appointment Letter</h4>
-                        <p className="text-gray-600">Official appointment document</p>
+                      <div className="border rounded p-4 bg-[#F4F6F8]/50">
+                        <h4 className="font-semibold text-[#1E2A38]">Appointment Letter</h4>
+                        <p className="text-[#4A4A4A]">Official appointment document</p>
                         <div className="mt-2">
                           <Button variant="outline" size="sm">📎 View Document</Button>
                         </div>
