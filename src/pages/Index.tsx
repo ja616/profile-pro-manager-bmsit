@@ -8,18 +8,18 @@ import { Users, Shield, Database, CheckCircle } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-soft-gray via-white to-slate-100">
+    <div className="min-h-screen bg-gradient-to-br from-soft-gray via-white to-light-teal/10">
       <Header />
       
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 px-4 gradient-bg-primary text-white overflow-hidden">
-          <div className="absolute inset-0 bg-black/10"></div>
+        <section className="relative py-20 px-4 bg-gradient-to-r from-primary-navy via-secondary-blue to-accent-teal text-white overflow-hidden">
+          <div className="absolute inset-0 bg-black/20"></div>
           <div className="container mx-auto relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                 Welcome to the Technical Staff
-                <span className="text-light-teal"> Management System</span>
+                <span className="text-light-teal block mt-2"> Management System</span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-slate-200 leading-relaxed">
                 Secure. Verified. Staff Data – Simplified.
@@ -27,13 +27,13 @@ const Index = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link to="/signup">
-                  <Button size="lg" className="bg-accent-teal hover:bg-light-teal text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <Button size="lg" className="bg-gradient-to-r from-accent-teal to-light-teal hover:from-light-teal hover:to-accent-teal text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <Users className="mr-2 h-5 w-5" />
                     Staff Registration
                   </Button>
                 </Link>
                 <Link to="/admin-login">
-                  <Button variant="outline" size="lg" className="border-2 border-light-teal text-light-teal hover:bg-light-teal hover:text-primary-navy px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300">
+                  <Button variant="outline" size="lg" className="border-2 border-light-teal text-light-teal hover:bg-light-teal hover:text-primary-navy px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 bg-white/10 backdrop-blur-sm">
                     <Shield className="mr-2 h-5 w-5" />
                     Admin Portal
                   </Button>
@@ -48,7 +48,7 @@ const Index = () => {
           <div className="container mx-auto">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-primary-navy mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-navy to-accent-teal bg-clip-text text-transparent mb-6">
                   About ProFile System
                 </h2>
                 <p className="text-lg text-medium-gray max-w-3xl mx-auto leading-relaxed">
@@ -58,9 +58,9 @@ const Index = () => {
               </div>
 
               <div className="grid md:grid-cols-3 gap-8 mb-16">
-                <Card className="border-2 border-slate-200 hover:border-accent-teal transition-all duration-300 hover:shadow-lg">
+                <Card className="border-2 border-slate-200 hover:border-accent-teal transition-all duration-300 hover:shadow-lg group">
                   <CardHeader className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-accent-teal to-light-teal rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-accent-teal to-light-teal rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <Database className="h-8 w-8 text-white" />
                     </div>
                     <CardTitle className="text-primary-navy">Secure Data Management</CardTitle>
@@ -72,9 +72,9 @@ const Index = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="border-2 border-slate-200 hover:border-accent-teal transition-all duration-300 hover:shadow-lg">
+                <Card className="border-2 border-slate-200 hover:border-success-green transition-all duration-300 hover:shadow-lg group">
                   <CardHeader className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-success-green to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-success-green to-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <CheckCircle className="h-8 w-8 text-white" />
                     </div>
                     <CardTitle className="text-primary-navy">Document Verification</CardTitle>
@@ -86,9 +86,9 @@ const Index = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="border-2 border-slate-200 hover:border-accent-teal transition-all duration-300 hover:shadow-lg">
+                <Card className="border-2 border-slate-200 hover:border-accent-purple transition-all duration-300 hover:shadow-lg group">
                   <CardHeader className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-warning-amber to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-accent-purple to-purple-400 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <Users className="h-8 w-8 text-white" />
                     </div>
                     <CardTitle className="text-primary-navy">Role-Based Access</CardTitle>
@@ -141,15 +141,17 @@ const Index = () => {
         </section>
 
         {/* Quick Access */}
-        <section className="py-16 px-4 gradient-bg-soft">
+        <section className="py-16 px-4 bg-gradient-to-r from-soft-gray to-light-teal/20">
           <div className="container mx-auto">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl font-bold text-primary-navy mb-8">Quick Access Portal</h2>
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-primary-navy to-accent-teal bg-clip-text text-transparent mb-8">
+                Quick Access Portal
+              </h2>
               <div className="grid sm:grid-cols-2 gap-6">
                 <Link to="/login">
-                  <Card className="hover:shadow-xl transition-all duration-300 border-2 hover:border-accent-teal cursor-pointer h-full">
+                  <Card className="hover:shadow-xl transition-all duration-300 border-2 hover:border-accent-teal cursor-pointer h-full group bg-white/90 backdrop-blur-sm">
                     <CardHeader className="text-center pb-4">
-                      <div className="w-20 h-20 bg-gradient-to-r from-accent-teal to-light-teal rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-20 h-20 bg-gradient-to-r from-accent-teal to-light-teal rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                         <Users className="h-10 w-10 text-white" />
                       </div>
                       <CardTitle className="text-xl text-primary-navy">Staff Portal</CardTitle>
@@ -161,9 +163,9 @@ const Index = () => {
                 </Link>
 
                 <Link to="/admin-login">
-                  <Card className="hover:shadow-xl transition-all duration-300 border-2 hover:border-error-red cursor-pointer h-full">
+                  <Card className="hover:shadow-xl transition-all duration-300 border-2 hover:border-accent-purple cursor-pointer h-full group bg-white/90 backdrop-blur-sm">
                     <CardHeader className="text-center pb-4">
-                      <div className="w-20 h-20 bg-gradient-to-r from-error-red to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-20 h-20 bg-gradient-to-r from-accent-purple to-purple-400 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                         <Shield className="h-10 w-10 text-white" />
                       </div>
                       <CardTitle className="text-xl text-primary-navy">Admin Dashboard</CardTitle>

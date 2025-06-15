@@ -20,17 +20,19 @@ export default {
 		},
 		extend: {
 			colors: {
-				// Custom professional color palette
-				'primary-navy': '#0F172A',
-				'secondary-blue': '#1E293B',
-				'accent-teal': '#0891B2',
-				'light-teal': '#22D3EE',
-				'soft-gray': '#F1F5F9',
-				'medium-gray': '#64748B',
-				'dark-gray': '#334155',
-				'success-green': '#059669',
-				'warning-amber': '#D97706',
-				'error-red': '#DC2626',
+				// Fresh, modern color palette
+				'primary-navy': '#1a365d',      // Rich navy blue
+				'secondary-blue': '#2d3748',    // Darker blue-gray
+				'accent-teal': '#38b2ac',       // Vibrant teal
+				'light-teal': '#81e6d9',        // Light teal
+				'soft-gray': '#f7fafc',         // Very light gray
+				'medium-gray': '#718096',       // Medium gray
+				'dark-gray': '#2d3748',         // Dark gray
+				'success-green': '#48bb78',     // Fresh green
+				'warning-amber': '#ed8936',     // Warm orange
+				'error-red': '#e53e3e',         // Clean red
+				'accent-purple': '#805ad5',     // Purple accent
+				'accent-pink': '#ed64a6',       // Pink accent
 				
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

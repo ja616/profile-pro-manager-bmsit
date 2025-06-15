@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { LogoWithBgRemoval } from "@/components/LogoWithBgRemoval";
 
 export const Header = () => {
   return (
@@ -8,15 +9,17 @@ export const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-accent-teal">
-              <img 
-                src="/lovable-uploads/7ca1c038-6de3-400d-a011-f40ed7173d81.png" 
-                alt="BMS Institute of Technology Logo" 
-                className="w-14 h-14 object-contain"
+            <div className="w-16 h-16 bg-gradient-to-r from-accent-teal to-light-teal rounded-full flex items-center justify-center shadow-lg border-2 border-accent-teal p-1">
+              <LogoWithBgRemoval 
+                originalSrc="/lovable-uploads/7ca1c038-6de3-400d-a011-f40ed7173d81.png"
+                alt="BMS Institute of Technology Logo"
+                className="w-full h-full object-contain rounded-full"
               />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-primary-navy">ProFile</h1>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-navy to-accent-teal bg-clip-text text-transparent">
+                ProFile
+              </h1>
               <p className="text-sm text-medium-gray">Professional Profile Manager</p>
             </div>
           </div>
@@ -37,7 +40,7 @@ export const Header = () => {
               </Button>
             </Link>
             <Link to="/admin-login">
-              <Button variant="outline" size="sm" className="border-2 border-accent-teal text-accent-teal hover:bg-accent-teal hover:text-white transition-all duration-200">
+              <Button size="sm" className="bg-gradient-to-r from-accent-teal to-light-teal text-white hover:from-accent-teal hover:to-accent-teal transition-all duration-200 shadow-lg">
                 Admin Login
               </Button>
             </Link>
