@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,6 +20,18 @@ export default {
 		},
 		extend: {
 			colors: {
+				// Custom professional color palette
+				'primary-navy': '#0F172A',
+				'secondary-blue': '#1E293B',
+				'accent-teal': '#0891B2',
+				'light-teal': '#22D3EE',
+				'soft-gray': '#F1F5F9',
+				'medium-gray': '#64748B',
+				'dark-gray': '#334155',
+				'success-green': '#059669',
+				'warning-amber': '#D97706',
+				'error-red': '#DC2626',
+				
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
